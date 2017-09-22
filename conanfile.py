@@ -1,7 +1,7 @@
 """Conan.io recipe for pcap library
 """
 import os
-from conans import ConanFile, tools
+from conans import ConanFile, CMake, tools
 
 
 class winpcapConan(ConanFile):
@@ -18,6 +18,7 @@ class winpcapConan(ConanFile):
     options = {"shared": [True, False]}
     default_options = "shared=False"
     exports = "LICENSE"
+    exports_sources = "CMakeLists.txt"
 
     def source(self):
         tools.get("https://www.winpcap.org/install/bin/WpcapSrc_4_1_3.zip")
@@ -25,6 +26,11 @@ class winpcapConan(ConanFile):
     def configure(self):
         if self.settings.os != "Windows":
             raise Exception("WinPcap is only supported for Windows. You are looking for libpcap/1.8.1@bincrafters/stable")
+
+    def build(self):
+        cmake = CMake(self)
+        cmake.configure(source_dir=os.path.join("winpcap", "winpcap", "libpcap"))
+        cmake.build()
 
     def package(self):
         self.copy("LICENSE", src=".", dst=".")
