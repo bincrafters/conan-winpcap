@@ -21,7 +21,12 @@ class winpcapConan(ConanFile):
     exports_sources = "CMakeLists.txt"
 
     def source(self):
-        tools.get("https://www.winpcap.org/install/bin/WpcapSrc_4_1_3.zip")
+        url = "http://www.winpcap.org/install/bin/WpcapSrc_4_1_3.zip"
+        filename = os.path.basename(url)
+        tools.download(url, filename, verify=False)
+        tools.check_md5(filename, "3a47076c5a437c023e76a58b77cfa890")
+        tools.unzip(filename)
+        os.unlink(filename)
 
     def configure(self):
         if self.settings.os != "Windows":
