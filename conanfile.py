@@ -6,13 +6,13 @@ import os
 from conans import ConanFile, MSBuild, tools
 
 
-class winpcapConan(ConanFile):
+class WinpcapConan(ConanFile):
     name = "winpcap"
     version = "4.1.3"
-    generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
     url = "http://github.com/bincrafters/conan-winpcap"
-    author = "Uilian Ries <uilianries@gmail.com>"
+    author = "Bincrafters <bincrafters@gmail.com>"
+    homepage = "https://www.winpcap.org/"
     description = "The WinPcap packet capture library."
     license = "Muliple"
     options = {"shared": [True, False]}
@@ -79,5 +79,4 @@ class winpcapConan(ConanFile):
         self.copy(pattern="*Packet.lib", dst="lib", src=self._packet_ntx_proj_dir, keep_path=False)
 
     def package_info(self):
-        self.cpp_info.includedirs.append("")
         self.cpp_info.libs = ["ws2_32", "wpcap", "Packet"]
