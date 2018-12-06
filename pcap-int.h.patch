@@ -1,0 +1,18 @@
+--- pcap-int.h	Wed Dec 05 22:53:30 2018
++++ pcap-int_patched.h	Wed Dec 05 23:04:57 2018
+@@ -455,10 +455,12 @@
+ 
+ #include <stdarg.h>
+ 
+-#if !defined(HAVE_SNPRINTF)
+-#define snprintf pcap_snprintf
+-extern int snprintf (char *, size_t, const char *, ...);
++#if !defined(HAVE_SNPRINTF) 
++#define snprintf _snprintf 
++//#define snprintf pcap_snprintf 
++//extern int snprintf (char *, size_t, const char *, ...); 
+ #endif
++
+ 
+ #if !defined(HAVE_VSNPRINTF)
+ #define vsnprintf pcap_vsnprintf

@@ -1,52 +1,45 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/e91iaablbidrl5br?svg=true)](https://ci.appveyor.com/project/uilianries/conan-winpcap-y64ie) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![badge](https://img.shields.io/badge/conan.io-winpcap%2F4.1.3-green.svg?logo=data:image/png;base64%2CiVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAA1VBMVEUAAABhlctjlstkl8tlmMtlmMxlmcxmmcxnmsxpnMxpnM1qnc1sn85voM91oM11oc1xotB2oc56pNF6pNJ2ptJ8ptJ8ptN9ptN8p9N5qNJ9p9N9p9R8qtOBqdSAqtOAqtR%2BrNSCrNJ/rdWDrNWCsNWCsNaJs9eLs9iRvNuVvdyVv9yXwd2Zwt6axN6dxt%2Bfx%2BChyeGiyuGjyuCjyuGly%2BGlzOKmzOGozuKoz%2BKqz%2BOq0OOv1OWw1OWw1eWx1eWy1uay1%2Baz1%2Baz1%2Bez2Oe02Oe12ee22ujUGwH3AAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfgBQkREyOxFIh/AAAAiklEQVQI12NgAAMbOwY4sLZ2NtQ1coVKWNvoc/Eq8XDr2wB5Ig62ekza9vaOqpK2TpoMzOxaFtwqZua2Bm4makIM7OzMAjoaCqYuxooSUqJALjs7o4yVpbowvzSUy87KqSwmxQfnsrPISyFzWeWAXCkpMaBVIC4bmCsOdgiUKwh3JojLgAQ4ZCE0AMm2D29tZwe6AAAAAElFTkSuQmCC)](http://www.conan.io/source/winpcap/4.1.3/bincrafters/stable)
-[![Download](https://api.bintray.com/packages/bincrafters/public-conan/winpcap%3Abincrafters/images/download.svg?version=4.1.3%3Astable)](https://bintray.com/bincrafters/oublic-conan/winpcap%3Abincrafters/4.1.3%3Astable/link)
+## Package Status
 
-## WinPCAP library is an API for capturing network traffic for Windows
+| Bintray | Windows | Linux & macOS |
+|:--------:|:---------:|:-----------------:|
+|[![Download](https://api.bintray.com/packages/bincrafters/public-conan/winpcap%3Abincrafters/images/download.svg) ](https://bintray.com/bincrafters/public-conan/winpcap%3Abincrafters/_latestVersion)|[![Build status](https://ci.appveyor.com/api/projects/status/github/bincrafters/conan-winpcap?svg=true)](https://ci.appveyor.com/project/bincrafters/conan-winpcap)|[![Build Status](https://travis-ci.org/bincrafters/conan-winpcap.svg)](https://travis-ci.org/bincrafters/conan-winpcap)|
 
-![conan-winpcap](conan-winpcap.png)
+## Conan.io Information
 
-[Conan.io](https://conan.io) package for [winpcap](https://github.com/wireshark/winpcap) project
+Bincrafters packages can be found in the following public Conan repository:
 
-The packages generated with this **conanfile** can be found in [Bintray](https://bintray.com/bincrafters/conan/winpcap%3Abincrafters).
+[Bincrafters Public Conan Repository on Bintray](https://bintray.com/bincrafters/public-conan)
 
-## Build packages
+*Note: You can click the "Set Me Up" button on the Bintray page above for instructions on using packages from this repository.*
 
-Download conan client from [Conan.io](https://conan.io) and run:
+## Issues
 
-    $ python build.py
+If you wish to report an issue or make a request for a Bincrafters package, please do so here:
 
-If your are in Windows you should run it from a VisualStudio console in order to get "mc.exe" in path.
+[Bincrafters Community Issues](https://github.com/bincrafters/community/issues)
 
-## Upload packages to server
+## General Information
 
-    $ conan upload winpcap/4.1.3@bincrafters/stable --all
+This GIT repository is managed by the Bincrafters team and holds files related to Conan.io.  For detailed information about Bincrafters and Conan.io, please visit the following resources:
 
-## Reuse the packages
+[Bincrafters Wiki - Common README](https://github.com/bincrafters/community/wiki/Common-README.md)
 
-### Basic setup
+[Bincrafters Technical Documentation](http://bincrafters.readthedocs.io/en/latest/)
 
-    $ conan install winpcap/4.1.3@bincrafters/stable
+[Bincrafters Blog](https://bincrafters.github.io)
 
-### Project setup
+## License Information
 
-If you handle multiple dependencies in your project is better to add a *conanfile.txt*
+Bincrafters packages are hosted on [Bintray](https://bintray.com) and contain Open-Source software which is licensed by the software's maintainers and NOT Bincrafters.  For each Open-Source package published by Bincrafters, the packaging process obtains the required license files along with the original source files from the maintainer, and includes these license files in the generated Conan packages.
 
-    [requires]
-    winpcap/4.1.3@bincrafters/stable
+The contents of this GIT repository are completely separate from the software being packaged and therefore licensed separately.  The license for all files contained in this GIT repository are defined in the [LICENSE.md](LICENSE.md) file in this repository.  The licenses included with all Conan packages published by Bincrafters can be found in the Conan package directories in the following locations, relative to the Conan Cache root (`~/.conan` by default):
 
-    [options]
-    shared=True
+### License(s) for packaged software:
 
-    [generators]
-    txt
-    cmake
+    ~/.conan/data/<pkg_name>/<pkg_version>/bincrafters/package/<random_package_id>/license/<LICENSE_FILES_HERE>
 
-Complete the installation of requirements for your project running:</small></span>
+*Note :   The most common filenames for OSS licenses are `LICENSE` AND `COPYING` without file extensions.*
 
-    conan install .
+### License for Bincrafters recipe:
 
-Project setup installs the library (and all his dependencies) and generates the files *conanbuildinfo.txt* and *conanbuildinfo.cmake* with all the paths and variables that you need to link with your dependencies.
-
-### License
-[BSD](LICENSE)
+    ~/.conan/data/<pkg_name>/<pkg_version>/bincrafters/export/LICENSE.md

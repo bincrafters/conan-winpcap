@@ -1,0 +1,11 @@
+--- version.rc	Wed Dec 05 22:09:47 2018
++++ version_patched.rc	Wed Dec 05 22:35:38 2018
+@@ -6,7 +6,7 @@
+ //
+ // Generated from the TEXTINCLUDE 2 resource.
+ //
+-#include "afxres.h"
++#include "windows.h"
+ 
+ /////////////////////////////////////////////////////////////////////////////
+ #undef APSTUDIO_READONLY_SYMBOLS

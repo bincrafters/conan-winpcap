@@ -1,0 +1,267 @@
+--- Packet.vcproj	Wed Dec 05 23:06:12 2018
++++ Packet_patched.vcproj	Wed Dec 05 23:09:46 2018
+@@ -44,7 +44,7 @@
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;HAVE_AIRPCAP_API;HAVE_AIRPCAP_API;HAVE_WANPACKET_API;HAVE_IPHELPER_API"
++				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;HAVE_IPHELPER_API"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="1"
+@@ -64,7 +64,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCLinkerTool"
+-				AdditionalDependencies="version.lib npptools.lib setupapi.lib ws2_32.lib iphlpapi.lib"
++				AdditionalDependencies="version.lib setupapi.lib ws2_32.lib iphlpapi.lib"
+ 				LinkIncremental="2"
+ 				ModuleDefinitionFile="..\packet.def"
+ 				GenerateDebugInformation="true"
+@@ -123,7 +123,7 @@
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;HAVE_AIRPCAP_API;HAVE_WANPACKET_API;HAVE_IPHELPER_API"
++				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;HAVE_IPHELPER_API"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="1"
+@@ -143,7 +143,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCLinkerTool"
+-				AdditionalDependencies="version.lib npptools.lib setupapi.lib ws2_32.lib iphlpapi.lib"
++				AdditionalDependencies="version.lib setupapi.lib ws2_32.lib iphlpapi.lib"
+ 				LinkIncremental="2"
+ 				ModuleDefinitionFile="..\packet.def"
+ 				GenerateDebugInformation="true"
+@@ -201,7 +201,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;HAVE_AIRPCAP_API;HAVE_WANPACKET_API;HAVE_IPHELPER_API"
++				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;HAVE_IPHELPER_API"
+ 				RuntimeLibrary="0"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="4"
+@@ -219,7 +219,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCLinkerTool"
+-				AdditionalDependencies="version.lib npptools.lib setupapi.lib ws2_32.lib iphlpapi.lib"
++				AdditionalDependencies="version.lib setupapi.lib ws2_32.lib iphlpapi.lib"
+ 				LinkIncremental="1"
+ 				ModuleDefinitionFile="..\packet.def"
+ 				GenerateDebugInformation="true"
+@@ -280,7 +280,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS; ;HAVE_AIRPCAP_API;HAVE_WANPACKET_API;HAVE_IPHELPER_API"
++				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS; ;HAVE_IPHELPER_API"
+ 				RuntimeLibrary="0"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="4"
+@@ -298,7 +298,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCLinkerTool"
+-				AdditionalDependencies="version.lib npptools.lib setupapi.lib ws2_32.lib iphlpapi.lib"
++				AdditionalDependencies="version.lib setupapi.lib ws2_32.lib iphlpapi.lib"
+ 				LinkIncremental="1"
+ 				ModuleDefinitionFile="..\packet.def"
+ 				GenerateDebugInformation="true"
+@@ -674,7 +674,7 @@
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;HAVE_AIRPCAP_API;HAVE_IPHELPER_API"
++				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;HAVE_IPHELPER_API"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="1"
+@@ -754,7 +754,7 @@
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;HAVE_AIRPCAP_API;HAVE_IPHELPER_API"
++				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;HAVE_IPHELPER_API"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="1"
+@@ -833,7 +833,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;HAVE_AIRPCAP_API;HAVE_IPHELPER_API"
++				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;HAVE_IPHELPER_API"
+ 				RuntimeLibrary="0"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="4"
+@@ -913,7 +913,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS; ;HAVE_AIRPCAP_API;HAVE_IPHELPER_API"
++				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS; ;HAVE_IPHELPER_API"
+ 				RuntimeLibrary="0"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="4"
+@@ -932,7 +932,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCLinkerTool"
+-				AdditionalDependencies="version.lib npptools.lib setupapi.lib ws2_32.lib iphlpapi.lib"
++				AdditionalDependencies="version.lib setupapi.lib ws2_32.lib iphlpapi.lib"
+ 				LinkIncremental="1"
+ 				ModuleDefinitionFile="..\packet.def"
+ 				GenerateDebugInformation="true"
+@@ -992,7 +992,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;HAVE_AIRPCAP_API;HAVE_WANPACKET_API;HAVE_IPHELPER_API;_DEBUG_TO_FILE"
++				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;HAVE_IPHELPER_API;_DEBUG_TO_FILE"
+ 				RuntimeLibrary="0"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="4"
+@@ -1010,7 +1010,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCLinkerTool"
+-				AdditionalDependencies="version.lib npptools.lib setupapi.lib ws2_32.lib iphlpapi.lib"
++				AdditionalDependencies="version.lib setupapi.lib ws2_32.lib iphlpapi.lib"
+ 				LinkIncremental="1"
+ 				ModuleDefinitionFile="..\packet.def"
+ 				GenerateDebugInformation="true"
+@@ -1071,7 +1071,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS; ;HAVE_AIRPCAP_API;HAVE_WANPACKET_API;HAVE_IPHELPER_API;_DEBUG_TO_FILE"
++				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS; ;HAVE_IPHELPER_API;_DEBUG_TO_FILE"
+ 				RuntimeLibrary="0"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="4"
+@@ -1089,7 +1089,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCLinkerTool"
+-				AdditionalDependencies="version.lib npptools.lib setupapi.lib ws2_32.lib iphlpapi.lib"
++				AdditionalDependencies="version.lib setupapi.lib ws2_32.lib iphlpapi.lib"
+ 				LinkIncremental="1"
+ 				ModuleDefinitionFile="..\packet.def"
+ 				GenerateDebugInformation="true"
+@@ -1149,7 +1149,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;HAVE_AIRPCAP_API;HAVE_IPHELPER_API;_DEBUG_TO_FILE"
++				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;HAVE_IPHELPER_API;_DEBUG_TO_FILE"
+ 				RuntimeLibrary="0"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="4"
+@@ -1229,7 +1229,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="..\..\..\Common;..\..\driver;..\..\..\..\AirPcap_devpack\include"
+-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS; ;HAVE_AIRPCAP_API;HAVE_IPHELPER_API;_DEBUG_TO_FILE"
++				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS; ;HAVE_IPHELPER_API;_DEBUG_TO_FILE"
+ 				RuntimeLibrary="0"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="4"
+@@ -1248,7 +1248,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCLinkerTool"
+-				AdditionalDependencies="version.lib npptools.lib setupapi.lib ws2_32.lib iphlpapi.lib"
++				AdditionalDependencies="version.lib setupapi.lib ws2_32.lib iphlpapi.lib"
+ 				LinkIncremental="1"
+ 				ModuleDefinitionFile="..\packet.def"
+ 				GenerateDebugInformation="true"
+@@ -1461,83 +1461,7 @@
+ 				RelativePath="..\Packet32.c"
+ 				>
+ 			</File>
+-			<File
+-				RelativePath="..\WanPacket\WanPacket.cpp"
+-				>
+-				<FileConfiguration
+-					Name="Debug NT4|Win32"
+-					ExcludedFromBuild="true"
+-					>
+-					<Tool
+-						Name="VCCLCompilerTool"
+-					/>
+-				</FileConfiguration>
+-				<FileConfiguration
+-					Name="Release NT4|Win32"
+-					ExcludedFromBuild="true"
+-					>
+-					<Tool
+-						Name="VCCLCompilerTool"
+-					/>
+-				</FileConfiguration>
+-				<FileConfiguration
+-					Name="Debug No NetMon|Win32"
+-					ExcludedFromBuild="true"
+-					>
+-					<Tool
+-						Name="VCCLCompilerTool"
+-					/>
+-				</FileConfiguration>
+-				<FileConfiguration
+-					Name="Debug No NetMon|x64"
+-					ExcludedFromBuild="true"
+-					>
+-					<Tool
+-						Name="VCCLCompilerTool"
+-					/>
+-				</FileConfiguration>
+-				<FileConfiguration
+-					Name="Release No NetMon|Win32"
+-					ExcludedFromBuild="true"
+-					>
+-					<Tool
+-						Name="VCCLCompilerTool"
+-					/>
+-				</FileConfiguration>
+-				<FileConfiguration
+-					Name="Release No NetMon|x64"
+-					ExcludedFromBuild="true"
+-					>
+-					<Tool
+-						Name="VCCLCompilerTool"
+-					/>
+-				</FileConfiguration>
+-				<FileConfiguration
+-					Name="Release No NetMon LOG_TO_FILE|Win32"
+-					ExcludedFromBuild="true"
+-					>
+-					<Tool
+-						Name="VCCLCompilerTool"
+-					/>
+-				</FileConfiguration>
+-				<FileConfiguration
+-					Name="Release No NetMon LOG_TO_FILE|x64"
+-					ExcludedFromBuild="true"
+-					>
+-					<Tool
+-						Name="VCCLCompilerTool"
+-					/>
+-				</FileConfiguration>
+-				<FileConfiguration
+-					Name="Release NT4 LOG_TO_FILE|Win32"
+-					ExcludedFromBuild="true"
+-					>
+-					<Tool
+-						Name="VCCLCompilerTool"
+-					/>
+-				</FileConfiguration>
+-			</File>
+-			<File
++      <File
+ 				RelativePath="..\..\driver\win_bpf_filter.c"
+ 				>
+ 				<FileConfiguration

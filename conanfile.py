@@ -1,12 +1,12 @@
-"""Conan.io recipe for pcap library
-"""
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
 import os
-from conans import ConanFile, CMake, tools
+from conans import ConanFile, MSBuild, tools
 
 
 class winpcapConan(ConanFile):
-    """Donwload pcap library, build and create package
-    """
     name = "winpcap"
     version = "4.1.3"
     generators = "cmake"
@@ -14,40 +14,70 @@ class winpcapConan(ConanFile):
     url = "http://github.com/bincrafters/conan-winpcap"
     author = "Uilian Ries <uilianries@gmail.com>"
     description = "The WinPcap packet capture library."
-    license = "https://github.com/the-tcpdump-group/libpcap/blob/master/LICENSE"
+    license = "Muliple"
     options = {"shared": [True, False]}
-    default_options = "shared=False"
-    exports = "LICENSE"
-    exports_sources = "CMakeLists.txt"
+    default_options = "shared=True"
+    exports = ["LICENSE.md"]
+    exports_sources = [
+        "CMakeLists.txt", 
+        "Packet.vcproj.patch",
+        "wpcap.vcproj.patch",
+        "version.rc.patch",
+        "pcap-int.h.patch",
+    ]
+    
+    _source_subfolder = "source_subfolder"
+    
+    _packet_ntx_proj_dir =  "source_subfolder/packetNtx/Dll/Project"
+    _packet_ntx_sln =  "source_subfolder/packetNtx/Dll/Project/Packet.sln"
+    
+    _winpcap_proj_dir =  "source_subfolder/wpcap/PRJ"
+    _winpcap_sln =  "source_subfolder/wpcap/PRJ/wpcap.sln"
+    
+    _packet_ntx_rc_dir = "source_subfolder/packetNtx/Dll"
+    _winpcap_rc_dir = "source_subfolder/wpcap/Win32-Extensions"
+    _libpcap_dir = "source_subfolder/wpcap/libpcap"
 
     def source(self):
-        url = "http://www.winpcap.org/install/bin/WpcapSrc_4_1_3.zip"
-        filename = os.path.basename(url)
-        tools.download(url, filename, verify=False)
-        tools.check_md5(filename, "3a47076c5a437c023e76a58b77cfa890")
-        tools.unzip(filename)
-        os.unlink(filename)
+        tools.get(
+            "http://www.winpcap.org/install/bin/WpcapSrc_4_1_3.zip", 
+            md5="3a47076c5a437c023e76a58b77cfa890",
+        )
+        os.rename("winpcap", self._source_subfolder)
+
+        tools.patch(self._packet_ntx_proj_dir, "Packet.vcproj.patch")
+        tools.patch(self._packet_ntx_rc_dir, "version.rc.patch")
+        tools.patch(self._winpcap_rc_dir, "version.rc.patch")
+        tools.patch(self._libpcap_dir, "pcap-int.h.patch")
 
     def configure(self):
         if self.settings.os != "Windows":
-            raise Exception("WinPcap is only supported for Windows. You are looking for libpcap/1.8.1@bincrafters/stable")
+            raise Exception("WinPcap is only supported for Windows. For other operating systems, look for libpcap.")
 
+            
     def build(self):
-        cmake = CMake(self)
-        cmake.configure(source_dir=os.path.join("winpcap", "winpcap", "libpcap"))
-        cmake.build()
+        msbuild = MSBuild(self)
+        msbuild.build(
+            self._packet_ntx_sln,
+            platforms={"x86": "Win32"},
+        )
+        
+        msbuild.build(
+            self._winpcap_sln,
+            build_type=str(self.settings.build_type) + " - No AirPcap",
+            platforms={"x86": "Win32"},
+        )
 
     def package(self):
-        self.copy("LICENSE", src=".", dst=".")
-        self.copy(pattern="*.h", dst="include", src=os.path.join(self.name, "Include"))
-        if self.settings.arch == "x86_64":
-            self.copy(pattern="*.dll", dst="bin", src=os.path.join(self.name, "Lib", "x64"), keep_path=False)
-            self.copy(pattern="*.lib", dst="lib", src=os.path.join(self.name, "Lib", "x64"), keep_path=False)
-        else:
-            self.copy(pattern="wpcap.dll", dst="bin", src=os.path.join(self.name, "Lib"), keep_path=False)
-            self.copy(pattern="Packet.dll", dst="bin", src=os.path.join(self.name, "Lib"), keep_path=False)
-            self.copy(pattern="wpcap.lib", dst="lib", src=os.path.join(self.name, "Lib"), keep_path=False)
-            self.copy(pattern="Packet.lib", dst="lib", src=os.path.join(self.name, "Lib"), keep_path=False)
+        self.copy(pattern="LICENSE.md", dst="licenses")
+        self.copy(pattern="*.h", dst="include", src=self._libpcap_dir)
+        self.copy(pattern="*.h", dst="include", src=os.path.join(self._libpcap_dir, "Win32", "Include"))
+        
+        self.copy(pattern="*wpcap.dll", dst="bin", src=self._winpcap_proj_dir, keep_path=False)
+        self.copy(pattern="*wpcap.lib", dst="lib", src=self._winpcap_proj_dir, keep_path=False)
+        self.copy(pattern="*Packet.dll", dst="bin", src=self._packet_ntx_proj_dir, keep_path=False)
+        self.copy(pattern="*Packet.lib", dst="lib", src=self._packet_ntx_proj_dir, keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = tools.collect_libs(self)
+        self.cpp_info.includedirs.append("")
+        self.cpp_info.libs = ["ws2_32", "wpcap", "Packet"]

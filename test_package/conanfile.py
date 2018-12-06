@@ -1,19 +1,20 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
 from conans import ConanFile, CMake
+import os
 
 
-class WinpcapTestConan(ConanFile):
+class TestPackageConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure(source_dir=self.conanfile_directory, build_dir="./")
+        cmake.configure()
         cmake.build()
 
-    def imports(self):
-        self.copy("*.dll", dst="bin", src="bin")
-
     def test(self):
-        cmake = CMake(self)
-        cmake.configure(source_dir=self.conanfile_directory, build_dir="./")
-        cmake.test()
+        bin_path = os.path.join("bin", "test_package")
+        self.run(bin_path, run_environment=True)
