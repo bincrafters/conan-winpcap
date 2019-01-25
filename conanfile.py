@@ -37,7 +37,8 @@ class WinpcapConan(ConanFile):
     _packet_ntx_rc_dir = "source_subfolder/packetNtx/Dll"
     _winpcap_rc_dir = "source_subfolder/wpcap/Win32-Extensions"
     _libpcap_dir = "source_subfolder/wpcap/libpcap"
-
+    _common_include_dir = "source_subfolder/Common"
+    
     def source(self):
         tools.get(
             "http://www.winpcap.org/install/bin/WpcapSrc_4_1_3.zip", 
@@ -69,9 +70,10 @@ class WinpcapConan(ConanFile):
         )
 
     def package(self):
-        self.copy(pattern="LICENSE.md", dst="licenses")
+        self.copy(pattern="LICENSE", dst="licenses")
+        self.copy(pattern="*.h", dst="include", src=self._common_include_dir)
         self.copy(pattern="*.h", dst="include", src=self._libpcap_dir)
-        self.copy(pattern="*.h", dst="include", src=os.path.join(self._libpcap_dir, "Win32", "Include"))
+        self.copy(pattern="*.h", dst="include", src=self._winpcap_rc_dir)
         
         self.copy(pattern="*wpcap.dll", dst="bin", src=self._winpcap_proj_dir, keep_path=False)
         self.copy(pattern="*wpcap.lib", dst="lib", src=self._winpcap_proj_dir, keep_path=False)
@@ -80,3 +82,7 @@ class WinpcapConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["ws2_32", "wpcap", "Packet"]
+        self.cpp_info.includedirs = [
+            "include", 
+            "include/Win32/Include"
+        ]
