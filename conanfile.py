@@ -84,7 +84,7 @@ class WinpcapConan(ConanFile):
         self.copy(pattern="*Packet.lib", dst="lib", src=self._packet_ntx_proj_dir, keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["ws2_32", "wpcap", "Packet"]
+        self.cpp_info.libs = ["ws2_32", "Iphlpapi", "wpcap", "Packet"]
         self.cpp_info.defines = ["WPCAP", "HAVE_REMOTE"]
         self.cpp_info.includedirs = [
             "include",
