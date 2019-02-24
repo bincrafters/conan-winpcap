@@ -59,6 +59,7 @@ class WinpcapConan(ConanFile):
                 msbuild.build_env.link_flags.append("/MACHINE:x86")
             else:
                 msbuild.build_env.link_flags.append("/SAFESEH:NO /MACHINE:x64")
+            
             msbuild.build(
                 self._packet_ntx_sln,
                 platforms=platforms,
@@ -84,6 +85,7 @@ class WinpcapConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["ws2_32", "wpcap", "Packet"]
+        self.cpp_info.defines = ["WPCAP", "HAVE_REMOTE"]
         self.cpp_info.includedirs = [
             "include",
             "include/Win32/Include"
