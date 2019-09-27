@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
+from conans.errors import ConanInvalidConfiguration
 import os
 from conans import ConanFile, MSBuild, tools
 
@@ -49,7 +50,7 @@ class WinpcapConan(ConanFile):
 
     def configure(self):
         if self.settings.os != "Windows":
-            raise Exception("WinPcap is only supported for Windows. For other operating systems, look for libpcap.")
+            raise ConanInvalidConfiguration("WinPcap is only supported for Windows. For other operating systems, look for libpcap.")
 
     def build(self):
         with tools.vcvars(self.settings, force=True):
