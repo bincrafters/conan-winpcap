@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
-
 from conans.errors import ConanInvalidConfiguration
 import os
 from conans import ConanFile, MSBuild, tools
@@ -12,7 +8,6 @@ class WinpcapConan(ConanFile):
     version = "4.1.3"
     settings = "os", "arch", "compiler", "build_type"
     url = "http://github.com/bincrafters/conan-winpcap"
-    author = "Bincrafters <bincrafters@gmail.com>"
     homepage = "https://www.winpcap.org/"
     description = "The WinPcap packet capture library."
     license = "Muliple"
