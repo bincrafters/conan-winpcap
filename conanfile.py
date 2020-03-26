@@ -11,7 +11,6 @@ class WinpcapConan(ConanFile):
     homepage = "https://www.winpcap.org/"
     description = "The WinPcap packet capture library."
     license = "Muliple"
-    exports = ["LICENSE.md"]
     exports_sources = [
         "CMakeLists.txt",
         "Packet.vcproj.patch",
